@@ -13,23 +13,22 @@ Root/Working Directory -> quasar-getting-started
         b.	File "quasar-getting-started/package-lock.json" gets created
 
 2.	Create a folder quasar-getting-started/myapp 
-    
-   	mkdir myapp
-   	cd myapp
+		
+		mkdir myapp
+   	`cd myapp`
 
 3.	Initialize folder with yarn
    
-	 	yarn -y ini
+		yarn -y ini
     
-    Expect:
-        a.	You see quasar-getting-started/myapp/package.json file with default values.
+    Expect: You see quasar-getting-started/myapp/package.json file with default values.
             
-						{
-							"name": "myapp",
-							"version": "1.0.0",
-							"main": "index.js",
-							"license": "MIT"
-						}
+		{
+			"name": "myapp",
+			"version": "1.0.0",
+			"main": "index.js",
+			"license": "MIT"
+		}
  
 Root/Working Directory -> myapp
 
@@ -41,26 +40,23 @@ Root/Working Directory -> myapp
 
     `yarn add --dev webpack webpack-cli webpack-dev-server`
         
-    Expect:
-        a.	You will see webpack & all dependencies installed under myapp/node_modules(they are a lot!)
-        b.	 Below code gets added to myapp/package.json:
+    Expect: You will see webpack & all dependencies installed under myapp/node_modules(they are a lot!). Below code gets added to 					myapp/package.json:
                       
-						 "devDependencies": {
-							"webpack": "^4.29.6",
-							"webpack-cli": "^3.3.0",
-							"webpack-dev-server": "^3.2.1"
-							}
+		 "devDependencies": {
+			"webpack": "^4.29.6",
+			"webpack-cli": "^3.3.0",
+			"webpack-dev-server": "^3.2.1"
+			}
                     
 2.	Add below script to myapp/package.json. 
               
 		"scripts": {
-						"dev": "webpack-dev-server --mode development --progress --hot --open",
-						"build": "webpack --mode production --progress"
-						}
+		"dev": "webpack-dev-server --mode development --progress --hot --open",
+		"build": "webpack --mode production --progress"
+			}
          
-    Expect:
-        a.  You can now run webpack scripts from yarn e.g. `yarn dev` or `yarn build`. The command won't run yet since we have not
-						defined an entry point which is myapp/dist/main.js by default.
+    Expect: You can now run webpack scripts from yarn e.g. `yarn dev` or `yarn build`. The command won't run yet since we have not
+					defined an entry point which is myapp/dist/main.js by default.
 
 3.  Create below directory structure.
 		
@@ -72,7 +68,7 @@ Root/Working Directory -> myapp
         
   		console.log("Hello ME!");
         
-5.  To verify webpack is configured properly. Run `yarn build` command and you'll see a file called "main.js" gets created in    	myapp/dist/main.js
+5.  To verify webpack is configured properly. Run `yarn build` command and you'll see a file called "main.js" gets created in 							myapp/dist/main.js
     
 6.  Further verify that command `node dist/main.js` outputs "Hello ME!"
 
@@ -84,14 +80,12 @@ Root/Working Directory -> myapp
    
 	 	yarn add --dev @babel/core @babel/preset-env
     
-    Expect: 
-	    a. Folder "myapp/node_modules/@babel" gets created
-    	b. Below code gets added to myapp/package.json
+    Expect: Folder "myapp/node_modules/@babel" gets created. Below code gets added to myapp/package.json
 		
-			 "devDependencies": {
-				"@babel/core": "^7.3.4",
-				"@babel/preset-env": "^7.3.4"
-				}
+		 "devDependencies": {
+			"@babel/core": "^7.3.4",
+			"@babel/preset-env": "^7.3.4"
+			}
 
 2. To verify Babel is working.
    
@@ -120,17 +114,15 @@ Root/Working Directory -> myapp
 	b. Create webpack.config.js and add babel-loader to it using code below. You could also add babel config to loader section  but for 				larger projects it is recommended to have separate babel config file
 		    
 			module.exports = {
-			  module: {
-				rules: [
-				  {
-					test: /\.js$/,
-					exclude: /node_modules/,
-					loader: 'babel-loader'
-
-				  }
-				]
-			  }
-
+			module: {
+			rules: [
+			{
+			test: /\.js$/,
+			exclude: /node_modules/,
+			loader: 'babel-loader'
+			}
+			]
+			}
 			};
 
 	c. Remove babel cli since we no longer need it.
@@ -245,9 +237,9 @@ Expect: dist/index.html gets generated. "dist/index.html" is the default output 
 3.	Update webpack.config.js -> module.rules
     
 		{
-			test:/\.vue$/,
-			exclude: /node_modules/,
-			loader: 'vue-loader'
+		test:/\.vue$/,
+		exclude: /node_modules/,
+		loader: 'vue-loader'
 		}
 
 4.	Create App.vue
@@ -260,9 +252,9 @@ Expect: dist/index.html gets generated. "dist/index.html" is the default output 
 		export default {
 		name: "app",
 		data() {
-			return {
-			message: "Hello from Vue!"
-			};
+		return {
+		message: "Hello from Vue!"
+		};
 		}
 		};
 		</script>
@@ -283,9 +275,9 @@ Expect: dist/index.html gets generated. "dist/index.html" is the default output 
 		import App from './App.vue';
 
 		new Vue({
-				el: '#app',
-				//render: h => h(App) //Use render or spread as below
-				...App
+		el: '#app',
+		//render: h => h(App) //Use render or spread as below
+		...App
 		})
 
 8.	Install css and vue-style loader
@@ -295,11 +287,11 @@ Expect: dist/index.html gets generated. "dist/index.html" is the default output 
 9.	Update webpack.config.js -> module.rules
 
 		{
-				test: /\.css$/,
-				use: [
-				'vue-style-loader',
-				'css-loader'
-				]
+		test: /\.css$/,
+		use: [
+		'vue-style-loader',
+		'css-loader'
+		]
 		}
  
 10. Create src/index.css
@@ -342,27 +334,27 @@ Expect: dist/index.html gets generated. "dist/index.html" is the default output 
 			<div>
 			<q-btn color="primary" label="Primary"/>
 			<q-circular-progress
-				:value="value"
-				size="90px"
-				:thickness="0.2"
-				color="orange"
-				center-color="grey-8"
-				track-color="transparent"
-				class="q-ma-md"
+			:value="value"
+			size="90px"
+			:thickness="0.2"
+			color="orange"
+			center-color="grey-8"
+			track-color="transparent"
+			class="q-ma-md"
 			/>
 			</div>
 		</template>
 
 		<script>
-				export default {
-					name: "app",
-					data() {
-						return {
-							message: "Hello from Vue!",
-							value: 50
-						};
-					}
-				};
+		export default {
+		name: "app",
+		data() {
+		return {
+		message: "Hello from Vue!",
+		value: 50
+		};
+		}
+		};
 		</script>
 
 4.	Remove code from src/index.css.
